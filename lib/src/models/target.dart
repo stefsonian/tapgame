@@ -19,7 +19,7 @@ class Target {
       this.size = 50,
       this.maxXoffset,
       this.maxYoffset,
-      this.isEvil = false}) {}
+      this.isEvil = false});
 
   void onHit() {
     // small change of target becoming evil when it's hit

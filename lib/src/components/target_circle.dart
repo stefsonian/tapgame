@@ -8,13 +8,17 @@ class TargetCircle extends StatelessWidget {
   Widget build(BuildContext context) {
     GameState gameState = Provider.of<GameState>(context);
     return GestureDetector(
-      onTap: () => gameState.onTargetHit(),
-      child: Container(
-        height: gameState.target.size,
-        width: gameState.target.size,
-        decoration: BoxDecoration(
-          color: gameState.target.color,
-          borderRadius: BorderRadius.circular(360),
+      onTap: () =>
+          gameState.onTargetHit(gameState.game.currentLevel.singleTarget),
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Container(
+          height: gameState.game.currentLevel.singleTarget.size,
+          width: gameState.game.currentLevel.singleTarget.size,
+          decoration: BoxDecoration(
+            color: gameState.game.currentLevel.singleTarget.color,
+            borderRadius: BorderRadius.circular(360),
+          ),
         ),
       ),
     );
