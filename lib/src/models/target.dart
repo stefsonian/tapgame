@@ -6,26 +6,42 @@ class Target {
   Color goodColor;
   Color evilColor;
   bool isEvil;
-  int point;
+  int goodPoint;
+  int evilPoint;
   double size;
-  Offset offset;
+  Offset offset; // coordinates
   double maxXoffset;
   double maxYoffset;
+  Duration evilModeDuration;
 
-  Target(
-      {this.goodColor = Colors.green,
-      this.evilColor = Colors.red,
-      this.point = 1,
-      this.size = 50,
-      this.maxXoffset,
-      this.maxYoffset,
-      this.isEvil = false});
+  Target({
+    this.goodColor = Colors.green,
+    this.evilColor = Colors.red,
+    this.goodPoint = 1,
+    this.size = 50,
+    this.maxXoffset,
+    this.maxYoffset,
+    this.isEvil = false,
+    this.evilModeDuration,
+    this.evilPoint = 0,
+  }) {
+    evilModeDuration = Duration(milliseconds: 500);
+  }
 
-  void onHit() {
+  void nextAction() {
     // small change of target becoming evil when it's hit
-    bool shouldBecomeEvil = (Random().nextInt(5) == 4 && !isEvil);
+    bool shouldBecomeEvil = (Random().nextInt(2) == 1 && !isEvil);
     isEvil = shouldBecomeEvil ? true : false;
     moveRandom();
+    if (isEvil) startEvilTimer();
+  }
+
+  void startEvilTimer() {
+    // evilPoint = 1;
+    Future.delayed(evilModeDuration, () {
+      // evilPoint = 0;
+      nextAction();
+    });
   }
 
   void moveRandom() {

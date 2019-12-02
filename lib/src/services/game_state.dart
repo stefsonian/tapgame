@@ -1,5 +1,4 @@
 import 'package:boloids/src/models/game.dart';
-import 'package:boloids/src/models/levels/level1.dart';
 import 'package:boloids/src/models/target.dart';
 import 'package:flutter/Material.dart';
 
@@ -19,20 +18,24 @@ class GameState with ChangeNotifier {
   }
 
   void onTargetHit(Target target) {
-    _game.currentLevel.score += target.point;
-    _game.currentLevel.singleTarget.onHit();
+    if (target.isEvil) {
+      _game.currentLevel.score -= target.evilPoint;
+    } else {
+      _game.currentLevel.score += target.goodPoint;
+    }
+
+    _game.currentLevel.firstTarget.nextAction();
     notifyListeners();
   }
 
   void setBounds({double maxHeight, double maxWidth}) {
-    _game.currentLevel.singleTarget.maxYoffset = maxHeight;
-    _game.currentLevel.singleTarget.maxXoffset = maxWidth;
+    _game.currentLevel.firstTarget.maxYoffset = maxHeight;
+    _game.currentLevel.firstTarget.maxXoffset = maxWidth;
   }
 
-  void setTargetSize(double size) =>
-      _game.currentLevel.singleTarget.size = size;
+  void setTargetSize(double size) => _game.currentLevel.firstTarget.size = size;
 
-  void get moveTargetRandom => _game.currentLevel.singleTarget.moveRandom();
+  void get moveTargetRandom => _game.currentLevel.firstTarget.moveRandom();
 
-  Target get singleTarget => _game.currentLevel.singleTarget;
+  Target get singleTarget => _game.currentLevel.firstTarget;
 }

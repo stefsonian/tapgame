@@ -1,6 +1,6 @@
-import 'package:boloids/src/models/levels/level1.dart';
+import 'package:boloids/src/models/level/level.dart';
 import 'package:flutter/foundation.dart';
-import 'package:boloids/src/models/levels/level.dart';
+import 'package:boloids/src/models/level/level.dart';
 
 class Game {
   List<Level> levels = [];
@@ -9,7 +9,7 @@ class Game {
   Game({@required this.levels});
 
   Game.withDefaultLevels() {
-    levels.add(Level1());
+    levels.add(Level.withDefaultTarget());
   }
 
   Level get currentLevel => levels[currentLevelIndex];
