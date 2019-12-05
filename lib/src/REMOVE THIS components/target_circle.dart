@@ -1,12 +1,16 @@
+
+// TODO: REMOVE THIS FILE
+/*
+
 import 'package:boloids/src/models/target.dart';
-import 'package:boloids/src/services/game_state.dart';
+import 'package:boloids/src/controllers/gameStateController.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class TargetCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    GameState gameState = Provider.of<GameState>(context);
+    GameStateController gameState = Provider.of<GameStateController>(context);
     return GestureDetector(
       onTap: () =>
           gameState.onTargetHit(gameState.game.currentLevel.firstTarget),
@@ -24,3 +28,4 @@ class TargetCircle extends StatelessWidget {
     );
   }
 }
+*/

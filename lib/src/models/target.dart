@@ -13,6 +13,13 @@ class Target {
   double maxXoffset;
   double maxYoffset;
   Duration evilModeDuration;
+  
+  // more variables
+  double speed;
+  double direction;
+  bool isTouched;
+
+  // TODO: generate Vector, derived from speed and direction
 
   Target({
     this.goodColor = Colors.green,

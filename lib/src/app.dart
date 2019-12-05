@@ -1,5 +1,5 @@
 import 'package:boloids/src/screens/arena/arena_screen.dart';
-import 'package:boloids/src/services/game_state.dart';
+import 'package:boloids/src/controllers/gameStateController.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,8 +8,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<GameState>.value(
-          value: GameState(),
+        ChangeNotifierProvider<GameStateController>.value(
+          value: GameStateController(),
         ),
       ],
       child: MaterialApp(

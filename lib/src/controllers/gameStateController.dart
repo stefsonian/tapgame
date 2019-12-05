@@ -2,7 +2,22 @@ import 'package:boloids/src/models/game.dart';
 import 'package:boloids/src/models/target.dart';
 import 'package:flutter/Material.dart';
 
-class GameState with ChangeNotifier {
+/*
+
+GameStateController tracks status of Game e.g.:
+a)	Number of Players
+b)	Creates instance of Game()
+a.	Game Total Score (derived value from all levels played so far
+b.	Game Settings (Game Complexity Beginner/Good/Master etc)
+c)	Calls next level via LevelStateController.next()
+a.	CurrentLevel = LevelSTateController.next()
+d)	Future function: Store List/Array of all Levels generated in game
+
+*/
+
+
+
+class GameStateController with ChangeNotifier {
   // Target _target = Target();
   // Target get target => _target;
   // set target(Target target) {
