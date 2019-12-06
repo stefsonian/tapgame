@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class Target {
   Color goodColor;
   Color evilColor;
+  Color targetColor;
   bool isEvil;
   int goodPoint;
   int evilPoint;
@@ -35,13 +36,15 @@ class Target {
     evilModeDuration = Duration(milliseconds: 500);
   }
 
+  // TODO: Remove from here, this function should now be controll directly by LevelStateController
   void nextAction() {
     // small change of target becoming evil when it's hit
-    bool shouldBecomeEvil = (Random().nextInt(2) == 1 && !isEvil);
+    bool shouldBecomeEvil = (Random().nextInt(3) == 1 && !isEvil);
     isEvil = shouldBecomeEvil ? true : false;
     moveRandom();
     if (isEvil) startEvilTimer();
   }
+
 
   void startEvilTimer() {
     // evilPoint = 1;
@@ -51,6 +54,7 @@ class Target {
     });
   }
 
+// TODO: Move function to TargetStateController
   void moveRandom() {
     double x = Random().nextDouble() * maxXoffset;
     double y = Random().nextDouble() * maxYoffset;

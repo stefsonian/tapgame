@@ -1,3 +1,4 @@
+import 'package:boloids/src/controllers/stageStateController.dart';
 import 'package:boloids/src/models/game.dart';
 import 'package:boloids/src/models/target.dart';
 import 'package:flutter/Material.dart';
@@ -18,6 +19,8 @@ d)	Future function: Store List/Array of all Levels generated in game
 
 
 class GameStateController with ChangeNotifier {
+
+
   // Target _target = Target();
   // Target get target => _target;
   // set target(Target target) {
@@ -25,12 +28,18 @@ class GameStateController with ChangeNotifier {
   //   notifyListeners();
   // }
 
+ //New
+
+
+
   Game _game = Game.withDefaultLevels();
   Game get game => _game;
   set game(Game game) {
     _game = game;
     notifyListeners();
   }
+
+  //
 
   void onTargetHit(Target target) {
     if (target.isEvil) {
