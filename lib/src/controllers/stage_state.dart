@@ -1,8 +1,5 @@
-import 'package:boloids/src/controllers/targetStateController.dart';
-import 'package:boloids/src/models/game.dart';
 import 'package:boloids/src/models/level/level.dart';
 import 'package:boloids/src/models/stage.dart';
-import 'package:boloids/src/models/target.dart';
 import 'package:flutter/Material.dart';
 
 /*
@@ -32,14 +29,24 @@ Example Goals within stage
 
 */
 
+class StageState with ChangeNotifier {
+  Stage _stage;
+  Level _activeLevel;
 
-// THIS CLASS IS CURRENTLY SKIPPED BY GameStateControllerNEW,
-// GameStateControllerNEW goes directly to LevelStateControler for now
-class StageStateController with ChangeNotifier {
+  StageState() {
+    print('Created: StageState');
+  }
 
-Stage currentStage;
-Level currentLevel;
+  Level get activeLevel => _activeLevel;
+  set activeLevel(Level activeLevel) {
+    _activeLevel = activeLevel;
+    notifyListeners();
+  }
 
+  Stage get stage => _stage;
+  set stage(Stage stage) {
+    _stage = stage;
+    activeLevel = stage.levels[0];
+    notifyListeners();
+  }
 }
-
-

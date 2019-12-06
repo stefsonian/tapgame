@@ -1,0 +1,13 @@
+1 The time left before the target disappears is shown by the target border shrinking
+(starting at 360 degrees and ending at 0 degrees). At 0 degrees the target is gone.
+We could also let the target start to fade away into the background until it's gone.
+
+2 The target appears on the screen and at the same time a 'hole' appears somewhere
+else on the screen (say, twice the size of the target) and immediately starts shrinking.
+The player must drag the target and 'drop it into the hole' before the hole becomes
+too small to fit the target.
+- Could be expanded with multiple holes shrinking at different rates and with
+different colours (holes of a certain colour shrink faster and give more points)
+- Cold be expanded by letting the target grow and shrink in size such that
+the player can opt to wait for the target to shrink enough to fit in the hole
+(but risk the hole shrinking faster or the target growing too big for the hole).
